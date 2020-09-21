@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+
+
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<style>
+
+
+	html, body {
+
+	  height: 100%;
+	}
+
+	
+
+	  body{
+	    display: flex;
+	    flex-direction: column;
+	    margin: 0;
+	    font-family: Tahoma;
+	  }
+
+	  .container {
+	    flex: 1;
+	  }
+
+
+
+	  #top {
+ 	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+  	  }
+
+	#bottom {
+	  display: flex;
+	  align-items: flex-start;
+	  justify-content: center;
+	}
+
+
+	#second {
+	  font-size: 150px;
+
+	}
+	
+	#hundreds {
+	  font-size: 40px;
+	}  
+
+	button {
+	  margin: 10px;
+
+	  border: 2px solid black;
+	  outline: none;
+	  background-color: white;
+	  padding: 14px 28px;
+	  font-size: 16px;
+	  font-family: Tahoma;
+
+
+	}
+	  
+
+	</style>
+
+
+  </head>
+
+  <body>
+
+	<div class="container" id="top">
+
+	  <span id="second">0</span> <span id="hundreds">0</span>
+
+  	</div>
+
+	<div class="container" id="bottom">
+
+	  <button id="start">Start</button>
+	  <button id="reset">Reset</button>
+
+	</div>
+
+
+	<script>
+
+
+	let second = 0;
+	let hundreds = 0;
+
+
+	let interval;
+	
+
+
+	function incrementTime(){
+	
+
+	  hundreds += 1;
+
+
+
+	  if(hundreds == 100){
+
+	    second += 1;
+	    hundreds = 0;
+
+	  }
+
+
+	  document.getElementById("second").innerText = second;
+	  document.getElementById("hundreds").innerText = hundreds;
+
+
+	
+
+	}
+
+
+
+
+	document.getElementById("start").addEventListener("click", function(){
+
+	
+
+
+		if (this.innerText == "Start"){
+		  this.innerText = "Stop";
+
+	  	  interval = setInterval(incrementTime, 10);
+
+		}
+		else{
+
+		  this.innerText = "Start";
+
+		  clearInterval(interval);
+
+		}
+
+	});
+
+	document.getElementById("reset").addEventListener("click", function(){
+
+	  second = 0;
+	  hundreds = 0;
+
+
+	  document.getElementById("second").innerText = second;
+	  document.getElementById("hundreds").innerText = hundreds;
+
+
+	  clearInterval(interval);
+
+
+
+	});
+
+
+
+
+
+
+	</script>
+
+	
+
+  </body>
+
+
+</html>
